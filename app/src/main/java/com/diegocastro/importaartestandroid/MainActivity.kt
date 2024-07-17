@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -12,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.diegocastro.importaartestandroid.ui.theme.ImportAarTestAndroidTheme
 import com.mercadolibre.android.point_integration_sdk.nativesdk.MPManager
 import com.mercadolibre.android.point_integration_sdk.nativesdk.configurable.MPConfigBuilder
@@ -48,13 +50,15 @@ fun Greeting(
     modifier: Modifier = Modifier,
     onInitializeMPManager: () -> Unit
 ) {
-    Button(onClick = onInitializeMPManager) {
-        Text(text = "Initialize MPManager")
+    Column(modifier = modifier.fillMaxSize()) {
+        Button(onClick = onInitializeMPManager, modifier = Modifier.padding(16.dp)) {
+            Text(text = "Initialize MPManager")
+        }
+        Text(
+            text = "Hello $name!",
+            modifier = Modifier.padding(16.dp)
+        )
     }
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
